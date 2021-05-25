@@ -6,8 +6,6 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :password
       t.string :token
 
-      t.boolean :enabled, default: true
-
       t.timestamps
     end
   end

@@ -2,22 +2,9 @@ class ApplicationController < ActionController::API
 
   private
 
-  def verify_selected_client
-    return if selected_user.present?
-
-    render(json: format_error(request.path, 'No existe el cliente'), status: 401)
-  end
-
-  def verify_current_user_admin
-    return if current_user.admin?
-
-    render(json: format_error(request.path, 'No sos admin'), status: 401)
-  end
-
   def check_token
     return if current_user.present?
-
-    render(json: format_error(request.path, 'No se quien sos'), status: 401)
+    render(json: format_error(request.path, 'Invalid token'), status: 401)
   end
 
   def format_error(path, message)
@@ -32,7 +19,11 @@ class ApplicationController < ActionController::API
     @current_user ||= User.find_by(token: header_token)
   end
 
-  def selected_user
-    @select_user ||= User.find_by(id: params[:id])
+  def current_user_game_player
+    @current_user_game_player ||= UserGamePlayer.find_by(user_id: current_user)
+  end
+
+  def current_game
+    @current_game ||= Game.joins()
   end
 end

@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-role = Role.create!(name: 'admin')
-user = User.create(name: 'Foo', login: 'admin', password: 'Admin1234')
-user.add_role(role)
+# user = User.create(name: "pepe", login: "cr7", password: "pepecr7")
+# game = Game.create(board: Array.new(9, ""))
+# user.add_game(game.id)
+
+# user2 = User.create(name: "facu", login: "facuce", password: "facufacuce")
+# user2.add_game(game.id)
+# game.update!(players_complete: true)

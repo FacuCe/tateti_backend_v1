@@ -228,10 +228,7 @@ HTTP/1.1 200 OK
 {
    "id": "{Id usuario}",
    "name": "{Nombre del usuario}",
-   "login": "{Login de usuario}",
-   "permissions": [
-       "{Permission}"
-   ]
+   "login": "{Login de usuario}"
 }
 ```
 

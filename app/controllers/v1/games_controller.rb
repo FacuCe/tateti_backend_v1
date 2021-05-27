@@ -33,19 +33,17 @@ class V1::GamesController < ApplicationController
         end
     end
 
-    # viendo
     def play
-
         if current_game.blank?
             render(json: { msg: "no game found" }, status: 400)
         else
             user_game_player = UserGamePlayer.find_by(user_id: current_user.id, game_id: current_game.id)
 
             if user_game_player.player_symbol != current_game.current_player
-                render(json: { msg: "it is not your turn"})
+                render(json: { msg: "it is not your turn"}, status: 400)
             elsif current_game.play(play_params[:square])
                 current_game.save!
-                render(json: current_game, status: :ok)
+                render(json: current_game, status: 200)
             else
                 render(json: { msg: "the square selected is not empty" }, status: 400)
             end
